@@ -20,10 +20,21 @@ use App\Http\Controllers\PeminjamanController;
 
 Route::get('/', function () {
     return view('layouts.index');
+})->middleware('auth');
+
+Route::middleware('only_guest')->group(function () {
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'authenticating']);
+    Route::get('register', [AuthController::class, 'register']);
 });
 
-Route::resource('/kategori', KategoriController::class);
-Route::resource('/barang', BarangController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/kategori', KategoriController::class);
+    Route::resource('/barang', BarangController::class); 
+});
+
+
 
 // Route::resource('/barang', 'BarangController');
 // Route::resource('/denda', 'DendaController');
@@ -37,3 +48,7 @@ Route::resource('/barang', BarangController::class);
 // Route::post('login', [AuthController::class, 'authenticating']);
 // Route::get('register', [AuthController::class, 'register']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

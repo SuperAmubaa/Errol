@@ -17,11 +17,10 @@
   <body>
 
     <div class="container-fluid">
-    {{-- @include('layouts.navbar')
+    @include('layouts.navbar')
     @include('layouts.header')
     <br/>
-    @include('layouts.main')
-    <br/> --}}
+    @yield('content')
     @include('layouts.footer')
 
     <script src="{{asset('js/propper.min.js')}}"></script>
