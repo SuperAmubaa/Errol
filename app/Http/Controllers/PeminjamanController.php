@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\Peminjaman;
 
 class PeminjamanController extends Controller
 {
@@ -13,7 +15,13 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        //
+        $ar_pinjam = DB::table('peminjaman')
+        ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
+        ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
+        
+        ->get();
+        return view('peminjaman/index', compact('ar_pinjam'));
     }
 
     /**
@@ -34,7 +42,17 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('barang')->insert(
+            [
+                'id'=>$request->id,
+                'user_id'=>$request->kategori_id,
+                'barang_id'=>$request->kategori_id,
+                'tgl_pinjam'=>$request->tgl_pinjam,
+                'tgl_kembali'=>$request->tgl_kembali,
+                'status'=>$request->status,
+            ]
+            );
+            return redirect ('/peminjaman');
     }
 
     /**

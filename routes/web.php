@@ -19,19 +19,21 @@ use App\Http\Controllers\PeminjamanController;
 */
 
 Route::get('/', function () {
-    return view('layouts.index');
+    return view('layouts.beranda');
 })->middleware('auth');
 
-Route::middleware('only_guest')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'authenticating']);
     Route::get('register', [AuthController::class, 'register']);
+    Route::post('daftar', [AuthController::class, 'daftar'])->name('daftar');
 });
 
 
 Route::middleware('auth')->group(function () {
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/barang', BarangController::class); 
+    Route::resource('/peminjaman', PeminjamanController::class); 
 });
 
 
