@@ -10,4 +10,9 @@ class Roles extends Model
     use HasFactory;
     // Mapping table.
     protected $table = 'roles';
+    
+    public function users() {
+        return $this->hasMany(User::class);
+    }
 }
+

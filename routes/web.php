@@ -20,7 +20,7 @@ use App\Http\Controllers\PeminjamanController;
 
 Route::get('/', function () {
     return view('layouts.beranda');
-})->middleware('auth');
+})->middleware('auth')->name('beranda');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -30,7 +30,7 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/barang', BarangController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 

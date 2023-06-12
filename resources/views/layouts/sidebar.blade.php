@@ -25,7 +25,7 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    @if(Auth::user()->role == 'petugas')
+    @if(Auth::user()->role->name == 'Petugas')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -55,7 +55,7 @@
     </li>
     @endif
 
-    @if(Auth::user()->role == 'admin')
+    @if(Auth::user()->role->name == 'Admin')
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/user')}}">
             <i class="fas fa-fw fa-user"></i>
