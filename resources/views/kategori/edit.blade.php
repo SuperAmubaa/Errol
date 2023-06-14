@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Form Kategori</h3>
+<h3>Edit Kategori</h3>
 @foreach($data as $rs)
 
 <form method="POST" action="{{ route('kategori.update',$rs->id)}}">

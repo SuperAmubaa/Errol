@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
 use App\Models\Barang;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BarangController extends Controller
 {
@@ -44,35 +45,41 @@ class BarangController extends Controller
         $validasi = $request->validate(
             [
                 'id'=>'unique:barang|min:4|max:4',
-                'foto'=>'image|mimes:png,jpg|max:2048',
                 'kategori_id'=>'required',
                 'nama'=>'required',
                 'stok'=>'required|numeric',
                 'harga'=>'required|numeric',
-                'rusak'=>'required|numeric',
-                'hilang'=>'required|numeric',
+                'beli'=>'required|numeric',
+                'foto'=>'image|mimes:png,jpg|max:2048',
                 
             ],
             [
                 'id.required' => 'wajib diisi',
-                'foto.image' => 'Ekstensi FIle harus : jpg, png',
-                'foto.max' => 'Ukuran File tidak boleh melebihi 2048 KB',
                 'kategori_id.required' => 'wajib diisi',
                 'nama.required' => 'wajib diisi',
                 'stok.required' => 'wajib diisi',
                 'harga.required' => 'wajib diisi',
-                'rusak.required' => 'wajib diisi',
-                'hilang.required' => 'wajib diisi',
-                
+                'beli.required' => 'wajib diisi',
+                'foto.image' => 'Ekstensi FIle harus : jpg, png',
+                'foto.max' => 'Ukuran File tidak boleh melebihi 2048 KB',
             ],
         );
        
+        // if ($foto = $request->file('foto')) {
+        //     $destinationPath = 'images/';
+        //     $profileImage = date('YmdHis') . "." . $foto->getClientOriginalExtension();
+        //     $foto->move($destinationPath, $profileImage);
+        //     $input['foto'] = "$profileImage";
+        // }
+
            if(!empty($request->foto)){
             $request->validate(
-                ['foto'=> 'image|mimes:png,jpg|max:2048']
-            );
-            $fileName = $request->nama.'.'.$request->foto->extension();
-            $request->foto->move(public_path('images'),$fileName);
+                ['foto'=> 'image|mimes:png,jpg|max:2048',
+                ]);
+            $fileName = $request->nama.'.'
+            .$request->foto->extension();
+            $request->foto
+            ->move(public_path('images'),$fileName);
             }else {
                 $fileName = '';
             }
@@ -82,13 +89,12 @@ class BarangController extends Controller
             [
                 'id'=>$request->id,
                 // 'foto'=>$request->foto,
-                'foto'=>$fileName,
                 'kategori_id'=>$request->kategori_id,
                 'nama'=>$request->nama,
                 'stok'=>$request->stok,
                 'harga'=>$request->harga,
-                'hilang'=>$request->hilang,
-                'rusak'=>$request->rusak,
+                'beli'=>$request->beli,
+                'foto'=>$fileName,
             ]
             );
             return redirect ('/barang');
@@ -137,26 +143,33 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         if(!empty($request->foto)){
             $request->validate(
                 ['foto'=> 'image|mimes:png,jpg|max:2048']
             );
+
+            // $data_foto = barang::where('id',$id);
+            // File::delete(public_path('foto'). '/'. $data_foto->foto);
+
             $fileName = $request->nama.'.'.$request->foto->extension();
             $request->foto->move(public_path('images'),$fileName);
             }else {
                 $fileName = '';
             }
 
+            
+
         DB::table('barang')->where('id',$id)->update(
             [
                 'id'=>$request->id,
-                'foto'=>$fileName,
+                // 'foto'=>$request->foto,
                 'kategori_id'=>$request->kategori_id,
                 'nama'=>$request->nama,
                 'stok'=>$request->stok,
                 'harga'=>$request->harga,
-                'hilang'=>$request->hilang,
-                'rusak'=>$request->rusak,
+                'beli'=>$request->beli,
+                'foto'=>$fileName,
             ]
             );
             return redirect ('/barang');

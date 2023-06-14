@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 
 class PengembalianController extends Controller
@@ -13,7 +15,8 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        //
+        $ar_pengembalian = DB::table('pengembalian')->get();
+        return view('pengembalian.index', compact('ar_pengembalian'));
     }
 
     /**

@@ -9,9 +9,6 @@
   
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a class="btn btn-primary" href="{{route('peminjaman.create')}}">Pinjam</a>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -23,7 +20,7 @@
             <th>Tanggal Pinjam</th>
             <th>Tanggal Kembali</th>
             <th>Status</th>
-            <th>Action</th>
+          
         </tr>
         <tbody>
             @foreach($ar_pinjam as $pj)

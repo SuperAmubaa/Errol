@@ -6,6 +6,7 @@ use App\Http\Controllers\DendaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/barang', BarangController::class); 
+    Route::resource('/denda', DendaController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 
+    Route::resource('/pengembalian', PengembalianController::class); 
+   
 });
 
 

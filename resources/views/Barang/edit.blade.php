@@ -2,30 +2,31 @@
 
 @section('content')
 @php
-$rs1 = App\Models\Kategori::all();   
+$bs1 = App\Models\Kategori::all();   
 @endphp
 
 
-<h3>Form Barang</h3>
-@foreach($data as $rs)
-<form method="POST" action="{{ route('barang.update',$rs->id)}}">
+<h3>Edit Barang</h3>
+@foreach($data as $bs)
+<form method="POST" action="{{ route('barang.update',$bs->id)}}" enctype="multipart/form-data">
 @csrf
 @method('put')
 <div class="form-group">
     <label>No</label>
-    <input type="text" name="id" value="{{ $rs->id }}" class="form-control">
+    <input type="text" name="id" value="{{ $bs->id }}" class="form-control">
 </div>
 <div class="form-group">
     <label>Foto</label>
-    <input type="file" name="foto" value="{{ $rs->foto }}" class="form-control">
+    <input type="file" name="foto" value="{{ $bs->foto }}" class="form-control">
+    {{-- <img src="{{ asset('images')}}/{{ $bs->foto }}" width="30"> --}}
 </div>
 <div class="form-group">
     <label>Kategori</label>
     <select class="form-control" name="kategori_id" >
         <option selected>--- Pilih Kategori ---</option>
-        @foreach($rs1 as $kat)
+        @foreach($bs1 as $kat)
         @php
-        $sel1 = ($kat->id == $rs->kategori_id ) ? 'selected' : '';
+        $sel1 = ($kat->id == $bs->kategori_id ) ? 'selected' : '';
         @endphp
         <option value="{{$kat->id}}" {{$sel1}}>{{$kat->name}}</option>
         @endforeach
@@ -33,25 +34,22 @@ $rs1 = App\Models\Kategori::all();
 </div>
 <div class="form-group">
     <label>Nama</label>
-    <input type="text" name="nama" value="{{ $rs->nama }}" class="form-control">
+    <input type="text" name="nama" value="{{ $bs->nama }}" class="form-control">
 </div>
 <div class="form-group">
     <label>Stok</label>
-    <input type="text" name="stok" value="{{ $rs->stok }}" class="form-control">
+    <input type="text" name="stok" value="{{ $bs->stok }}" class="form-control">
 </div>
 <div class="form-group">
     <label>Harga Sewa</label>
-    <input type="text" name="harga" value="{{ $rs->harga }}" class="form-control">
+    <input type="text" name="harga" value="{{ $bs->harga }}" class="form-control">
 </div>
 <div class="form-group">
-    <label>Harga Rusak</label>
-    <input type="text" name="rusak" value="{{ $rs->rusak }}" class="form-control">
+    <label>Harga Beli</label>
+    <input type="text" name="beli" value="{{ $bs->beli }}" class="form-control">
 </div>
-<div class="form-group">
-    <label>Harga Hilang</label>
-    <input type="text" name="hilang" value="{{ $rs->hilang }}" class="form-control">
-</div>
-<button type="submit" name="proses" value="simpan" class="btn btn-primary">Simpan</button>
+
+<button type="submit" name="proses" value="simpan" class="btn btn-primary">Ubah</button>
 <button type="reset" name="unproses" value="Reset" class="btn btn-info">Batal</button>
 </form>
 @endforeach

@@ -69,18 +69,9 @@ $rs1 = App\Models\Kategori::all();
     @enderror
 </div>
 <div class="form-group">
-    <label>Harga Rusak</label>
-    <input type="text" name="rusak" value="{{old('rusak')}}" class="form-control @error('rusak') is-invalid @enderror ">
-    @error('rusak')
-    <div class="invalid-feedback">
-        {{ $message }}
-    </div>
-    @enderror
-</div>
-<div class="form-group">
-    <label>Harga Hilang</label>
-    <input type="text" name="hilang" value="{{old('hilang')}}" class="form-control @error('hilang') is-invalid @enderror">
-    @error('hilang')
+    <label>Harga Beli</label>
+    <input type="text" name="beli" value="{{old('beli')}}" class="form-control @error('beli') is-invalid @enderror ">
+    @error('beli')
     <div class="invalid-feedback">
         {{ $message }}
     </div>

@@ -36,7 +36,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ url('/kategori')}}">Kategori</a>
                 <a class="collapse-item" href="{{ url('/barang')}}">Barang</a>
-                <a class="collapse-item" href="{{ url('/denda')}}">Data Denda</a>
+                <a class="collapse-item" href="{{ url('/denda')}}">Denda</a>
             </div>
         </div>
     </li>
@@ -44,7 +44,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
             aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-fw fa-shopping-cart"></i>
-            <span>Transaksi</span>
+            <span>Penyewaan</span>
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

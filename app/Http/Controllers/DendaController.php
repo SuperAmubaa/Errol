@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\Denda;
 
 class DendaController extends Controller
 {
@@ -13,7 +15,8 @@ class DendaController extends Controller
      */
     public function index()
     {
-        //
+        $ar_denda = DB::table('denda')->get();
+        return view('denda.index', compact('ar_denda'));
     }
 
     /**
@@ -23,7 +26,7 @@ class DendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('denda.form');
     }
 
     /**
@@ -34,7 +37,15 @@ class DendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('denda')->insert(
+            [
+                'id'=>$request->id,
+                'jenis'=>$request->jenis,
+                'keterangan'=>$request->keterangan,
+                'tarif'=>$request->tarif,
+            ]
+            );
+            return redirect ('/denda');
     }
 
     /**
@@ -45,7 +56,12 @@ class DendaController extends Controller
      */
     public function show($id)
     {
-        //
+        $ar_denda = DB::table('denda')
+        ->where('id','=',$id)
+        ->get();
+
+        return view('denda.show',
+        compact('ar_denda'));
     }
 
     /**
@@ -56,7 +72,11 @@ class DendaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('denda')->where('id',$id)
+        ->get();
+
+        return view('denda/edit',
+        compact('data'));
     }
 
     /**
@@ -68,7 +88,15 @@ class DendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('denda')->where('id',$id)->update(
+            [
+                'id'=>$request->id,
+                'jenis'=>$request->jenis,
+                'keterangan'=>$request->keterangan,
+                'tarif'=>$request->tarif,
+            ]
+            );
+            return redirect ('/denda');
     }
 
     /**
@@ -79,6 +107,8 @@ class DendaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('denda')->where('id',$id)->delete();
+
+        return redirect('/denda');
     }
 }
