@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 
@@ -38,6 +39,14 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/peminjaman', PeminjamanController::class); 
     Route::resource('/pengembalian', PengembalianController::class); 
    
+});
+
+Route::middleware(['auth', 'anggota'])->group(function () {
+    Route::resource('/penyewaan', PenyewaanController::class);
+    // Route::get('/penyewaan-add', [PenyewaanController::class, 'create'])->name('penyewaan-add');
+    // Route::post('/penyewaan-store', [PenyewaanController::class, 'store'])->name('penyewaan-store');
+
+
 });
 
 

@@ -63,6 +63,21 @@
     </li>
     @endif
 
+    @if(Auth::user()->role->name == 'Anggota')
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Penyewaan</span>
+        </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ url('/penyewaan')}}">Barang</a>
+                <a class="collapse-item" href="{{ url('/')}}">Pesanan Saya</a>
+            </div>
+        </div>
+    </li>
+    @endif
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             AdminSeeder::class,
             PetugasSeeder::class,
+            AnggotaSeeder::class,
         ]);
     }
 }

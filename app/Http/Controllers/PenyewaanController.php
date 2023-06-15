@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use App\Models\Jenis;
 
-class JenisController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Peminjaman;
+
+class PenyewaanController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,8 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $ar_jenis = DB::table('jenis')->get();
-        return view('jenis.index', compact('ar_jenis'));
+        // $users = User::all();
+        return view('penyewaan.index');
     }
 
     /**
@@ -26,7 +28,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('jenis.form');
+        return view('penyewaan.form');
     }
 
     /**
@@ -37,13 +39,33 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('jenis')->insert(
+     
+        // $user_id = auth()->user()->id;
+
+        // if ($this->barang->stok - $this->jumlah_pesanan < 0){
+        //     $this->validasi = false;
+        // } else {
+        //     Pesanan::create([
+        //         'id'    => $id,
+        //         'users_id'          => $user_id,
+        //         'barang_id'         => $barang_id,
+        //         'tgl_pinjam'        => $this->tgl_pinjam,
+        //         'tgl_kembali'       => $this->tgl_kembali,
+                
+        //     ]);
+        //     return redirect ('/penyewaan');
+        // }
+        DB::table('peminjaman')->insert(
             [
                 'id'=>$request->id,
-                'name'=>$request->name,
+                'user_id'=>$request->user_id,
+                'barang_id'=>$request->barang_id,
+                'tgl_pinjam'=>$request->tgl_pinjam,
+                'tgl_kembali'=>$request->tgl_kembali,
+                
             ]
             );
-            return redirect ('/jenis');
+            return redirect ('/penyewaan');
     }
 
     /**
@@ -54,12 +76,7 @@ class JenisController extends Controller
      */
     public function show($id)
     {
-        $ar_jenis = DB::table('jenis')
-        ->where('id','=',$id)
-        ->get();
-
-        return view('jenis.show',
-        compact('ar_jenis'));
+        //
     }
 
     /**
@@ -70,11 +87,7 @@ class JenisController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('jenis')->where('id',$id)
-        ->get();
-
-        return view('pengarang/form_edit',
-        compact('data'));
+        //
     }
 
     /**
@@ -86,13 +99,7 @@ class JenisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('jenis')->where('id',$id)->update(
-            [
-                'id'=>$request->id,
-                'name'=>$request->name,
-            ]
-            );
-            return redirect ('/jenis'.'/'.$id);
+        //
     }
 
     /**
@@ -103,8 +110,6 @@ class JenisController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('jenis')->where('id',$id)->delete();
-
-        return redirect('/jenis');
+        //
     }
 }
