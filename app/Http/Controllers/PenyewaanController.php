@@ -40,21 +40,7 @@ class PenyewaanController extends Controller
     public function store(Request $request)
     {
      
-        // $user_id = auth()->user()->id;
-
-        // if ($this->barang->stok - $this->jumlah_pesanan < 0){
-        //     $this->validasi = false;
-        // } else {
-        //     Pesanan::create([
-        //         'id'    => $id,
-        //         'users_id'          => $user_id,
-        //         'barang_id'         => $barang_id,
-        //         'tgl_pinjam'        => $this->tgl_pinjam,
-        //         'tgl_kembali'       => $this->tgl_kembali,
-                
-        //     ]);
-        //     return redirect ('/penyewaan');
-        // }
+        
         DB::table('peminjaman')->insert(
             [
                 'id'=>$request->id,
@@ -76,7 +62,7 @@ class PenyewaanController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             PetugasSeeder::class,
             AnggotaSeeder::class,
+            DendaSeeder::class,
         ]);
     }
 }

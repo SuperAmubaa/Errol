@@ -10,4 +10,12 @@ class Kategori extends Model
     use HasFactory;
     // Mapping table.
     protected $table = 'kategori';
+
+    protected $fillable =[
+        'name',];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
 }

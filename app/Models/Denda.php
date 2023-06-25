@@ -10,4 +10,16 @@ class Denda extends Model
     use HasFactory;
     // Mapping table.
     protected $table = 'denda';
+
+    protected $fillable = [
+        'jenis',
+        'keterangan',
+        'tarif',
+    ];
+    
+    public function pengembalian()
+        {
+            return $this->hasMany(Pengembalian::class);
+        }
 }
+

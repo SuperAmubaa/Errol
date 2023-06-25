@@ -21,8 +21,12 @@ class Barang extends Model
         'foto',
         
     ];
-
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjamam::class);
+    }
+    
     public function kategori(){
-        return $this->belongsTo(kategori::class);
+        return $this->belongsTo(Kategori::class);
     } // fungsi diarahkan ke models Kategori dan berelasi one to many (satu kategori untuk banyak barang)
 }

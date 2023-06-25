@@ -20,7 +20,8 @@
             <th>Tanggal Pinjam</th>
             <th>Tanggal Kembali</th>
             <th>Status</th>
-          
+            <th>Konfirmasi</th>
+
         </tr>
         <tbody>
             @foreach($ar_pinjam as $pj)
@@ -32,23 +33,10 @@
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>
                 <td>
-                    @if ($pj->status == 'pending')
-                    <div class="d-inline">
-                        <button class="btn btn-success btn-sm action" value="acc" data-id="{{ $pj->id }}"><i class="fas fa-check"></i> Setujui</button>
-                        <button class="btn btn-danger btn-sm action" value="reject" data-id="{{ $pj->id }}"><i class="fas fa-times"></i> Tolak</button>
-                    </div>
-                    @endif
-
-
-                {{-- <td>
-                <form method="POST" action="{{ route('peminjaman.destroy',$pj->id)}}">
-                    @csrf
-                    @method('delete')
-                <a class="btn btn-info" href="{{route('kategori.show',$pj->id)}}">Detail</a>  
-                <a class="btn btn-success" href="{{route('kategori.edit',$pj->id)}}">Edit</a>  
-                <button class="btn btn-danger" onclick="return confirm('Anda Yakin Data di Hapus?')">Hapus</button>
-                </form>
-            </td> --}}
+                    {{-- tombol --}}
+                    <a class="btn btn-primary" href="{{ url ('peminjaman/status',$pj->id)}}">Kembali</a>  
+                </td>
+                
             </tr>
             @endforeach
         </tbody>
@@ -57,6 +45,19 @@
 </div>
         </div>
     </div>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script> --}}
+{{-- <script>
+    $(.'status').change(function(){
+        var status = $(this).val();
+        var stt = status.substr(13,10);
+        
+        $.ajax({
+            url:"{{ route('peminjaman.update_status') }}",
+            method : "post"
+            data: {stt:stt}
+        });
 
+    });
+</script> --}}
 
 @endsection

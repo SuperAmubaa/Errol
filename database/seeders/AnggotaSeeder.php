@@ -18,12 +18,20 @@ class AnggotaSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'anggota',
-            'email' => 'anggota@example.com',
-            'password' => Hash::make('anggota123'),
+            'name' => 'ammar',
+            'email' => 'ammar@example.com',
+            'password' => Hash::make('ammar123'),
             'role_id' => 3,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ]);
+        ],
+    [
+        'name' => 'udin',
+            'email' => 'udin@example.com',
+            'password' => Hash::make('udin123'),
+            'role_id' => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+    ]);
     }
 }

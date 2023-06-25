@@ -15,8 +15,18 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $ar_pengembalian = DB::table('pengembalian')->get();
+
+        // $data = Pengembalian::all();
+        // return view('pengembalian.index', compact('data'));
+
+        $ar_pengembalian = DB::table('pengembalian')
+        ->join('peminjaman', 'peminjaman.id', '=', 'pengembalian.peminjaman_id')
+        ->join('denda', 'denda.id', '=', 'pengembalian.denda_id')
+        ->select('pengembalian.*', 'peminjaman.user_id AS us',  'denda.jenis AS jn')
+        
+        ->get();
         return view('pengembalian.index', compact('ar_pengembalian'));
+    
     }
 
     /**
@@ -26,7 +36,7 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        //
+         return view('pengembalian.form');
     }
 
     /**
@@ -37,7 +47,16 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('pengembalian')->insert(
+            [
+                'id'=>$request->id,
+                'peminjaman_id'=>$request->peminjaman_id,
+                'tgl_kembali'=>$request->tgl_kembali,
+                'denda_id'=>$request->denda_id,
+                'tarif'=>$request->tarif,
+            ]
+            );
+            return redirect ('/pengembalian');
     }
 
     /**

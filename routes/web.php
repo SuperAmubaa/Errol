@@ -36,7 +36,15 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/barang', BarangController::class); 
     Route::resource('/denda', DendaController::class); 
-    Route::resource('/peminjaman', PeminjamanController::class); 
+
+    //Peminjaman
+     Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman-index');
+     Route::get('/peminjaman/status/{id}', [PeminjamanController::class, 'index'])->name('peminjaman-updateStatus');
+    // Route::get('peminjaman/status/{id}', 'PeminjamanController@updateStatus'); 
+    // Route::get('/peminjaman-status/{id}', [PeminjamanController::class, 'updateStatus']); 
+   
+    // Route::get('/peminjaman', [PenyewaanController::class, 'index'])->name('penyewaan-index');
+   
     Route::resource('/pengembalian', PengembalianController::class); 
    
 });
