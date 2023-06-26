@@ -1,8 +1,10 @@
 @extends('layouts.index')
+
 @section('content')
-@foreach($ar_barang as $br)
+@foreach($ar_user as $us)
 <div class="card" style="width: 18rem;">
-    @php
+
+    {{-- @php
     if(!empty($br->foto)){
     @endphp
         <img src="{{ asset('images')}}/{{ $br->foto }}" width="100%"/>
@@ -12,12 +14,12 @@
         <img src="{{ asset('images')}}/noimages.png" width="100%"/>
     @php
     }
-    @endphp
+    @endphp --}}
     <div class="card-body">
-        @foreach($ar_barang as $brg)
-      <h5 class="card-title">{{$brg->kat}}</h5>
-      <p class="card-text">{{$brg->nama}}</p>
-      
+        @foreach($ar_user as $us)
+      <h5 class="card-title">{{$us->name}}</h5>
+      <h5 class="card-title">{{$us->email}}</h5>
+      <h5 class="card-title">{{$us->rol}}</h5>
       @endforeach
     </div>
   </div>

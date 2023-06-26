@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
@@ -31,26 +32,23 @@ Route::middleware('guest')->group(function () {
     Route::post('daftar', [AuthController::class, 'daftar'])->name('daftar');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/user', UserController::class);
+  
+});
 
 Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/barang', BarangController::class); 
     Route::resource('/denda', DendaController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 
+    Route::resource('/pengembalian', PengembalianController::class); 
 
     //Peminjaman
     //  Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman-index');
     //  Route::get('peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name('peminjaman/edit');
     //  Route::get('peminjaman/edit/{id}', [PeminjamanController::class, 'update'])->name('peminjaman/update');
 
-
-    // Route::get('peminjaman/status/{id}', 'PeminjamanController@updateStatus'); 
-    // Route::get('/peminjaman-status/{id}', [PeminjamanController::class, 'updateStatus']); 
-   
-    // Route::get('/peminjaman', [PenyewaanController::class, 'index'])->name('penyewaan-index');
-   
-    Route::resource('/pengembalian', PengembalianController::class); 
-   
 });
 
 Route::middleware(['auth', 'anggota'])->group(function () {
@@ -60,6 +58,9 @@ Route::middleware(['auth', 'anggota'])->group(function () {
 
 
 });
+
+
+
 
 
 
