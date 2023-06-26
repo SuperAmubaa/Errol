@@ -34,7 +34,7 @@
                 <td>{{ $pj->status }}</td>
                 <td>
                     {{-- tombol --}}
-                    <a class="btn btn-primary" href="{{ url ('peminjaman/status',$pj->id)}}">Kembali</a>  
+                    <a class="btn btn-primary" href="{{ route ('peminjaman.edit',$pj->id)}}">Konfirmasi</a>  
                 </td>
                 
             </tr>

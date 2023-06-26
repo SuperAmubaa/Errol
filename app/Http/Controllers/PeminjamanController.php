@@ -96,7 +96,11 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('peminjaman')->where('id',$id)
+        ->get();
+
+        return view('peminjaman/edit',
+        compact('data'));
     }
 
     /**
@@ -108,7 +112,19 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('peminjaman')->where('id',$id)->update(
+            [
+                
+                'id'=>$request->id,
+                // 'user_id'=>$request->user_id,
+                // 'barang_id'=>$request->barang_id,
+                // 'tgl_pinjam'=>$request->tgl_pinjam,
+                // 'tgl_kembali'=>$request->tgl_kembali,
+                'status'=>$request->status,
+                
+            ]
+            );
+            return redirect ('/peminjaman');
     }
 
     /**

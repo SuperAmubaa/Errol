@@ -17,7 +17,7 @@
         @foreach($ar_barang as $brg)
       <h5 class="card-title">{{$brg->kat}}</h5>
       <p class="card-text">{{$brg->nama}}</p>
-      <a href="#" class="btn btn-primary">Sewa Barang</a>
+      
       @endforeach
     </div>
   </div>
