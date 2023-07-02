@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+// use App\Models\User;
+// use App\Models\Barang;
 use App\Models\Peminjaman;
 
 class PeminjamanController extends Controller
@@ -15,8 +17,7 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        // $data = Peminjaman::all();
-        // return view('peminjaman.index', compact('data'));
+       
 
         $ar_pinjam = DB::table('peminjaman')
         ->join('users', 'users.id', '=', 'peminjaman.user_id')

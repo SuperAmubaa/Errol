@@ -22,7 +22,9 @@ class PengembalianController extends Controller
         $ar_pengembalian = DB::table('pengembalian')
         ->join('peminjaman', 'peminjaman.id', '=', 'pengembalian.peminjaman_id')
         ->join('denda', 'denda.id', '=', 'pengembalian.denda_id')
-        ->select('pengembalian.*', 'peminjaman.user_id AS us',  'denda.jenis AS jn')
+        ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        ->select('pengembalian.*', 'users.name AS us',  'denda.jenis AS jn')
+        // ->select('pengembalian.*', 'peminjaman.user_id AS us',  'denda.jenis AS jn')
         
         ->get();
         return view('pengembalian.index', compact('ar_pengembalian'));

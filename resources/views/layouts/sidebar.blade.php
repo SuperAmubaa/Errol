@@ -72,8 +72,8 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ url('/penyewaan')}}">Barang</a>
-                <a class="collapse-item" href="{{ url('/')}}">Pesanan Saya</a>
+                <a class="collapse-item" href="{{ url('/penyewaan')}}">Sewa Barang</a>
+                <a class="collapse-item" href="{{ url('/penyewaan-riwayat')}}">Riwayat Penyewaan</a>
             </div>
         </div>
     </li>

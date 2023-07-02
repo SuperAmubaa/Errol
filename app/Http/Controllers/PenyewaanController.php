@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Peminjaman;
+use Illuminate\Support\Facades\Auth;
+// use App\Models\User;
+// use App\Models\Barang;
+// use App\Models\Peminjaman;
 
 class PenyewaanController extends Controller
 {
@@ -28,6 +32,11 @@ class PenyewaanController extends Controller
      */
     public function create()
     {
+        // $user = User::all();
+        // $barang = Barang::all();
+        // $piminjaman = Peminjaman::all();
+        // return view('peminjaman.create', $data);
+
         return view('penyewaan.form');
     }
 
@@ -54,6 +63,18 @@ class PenyewaanController extends Controller
             return redirect ('/penyewaan');
     }
 
+    public function riwayatPesanan()
+    {
+         $ar_pinjam = DB::table('peminjaman')
+        ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
+        ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
+        
+        ->get();
+        return view('penyewaan.riwayat', compact('ar_pinjam'));
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -62,7 +83,16 @@ class PenyewaanController extends Controller
      */
     public function show($id)
     {
+        $ar_pinjam = DB::table('peminjaman')
+        ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
+        ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
         
+        ->where('users.id','=',$id)
+        ->get();
+
+        return view('penyewaan.show',
+        compact('ar_pinjam'));
     }
 
     /**

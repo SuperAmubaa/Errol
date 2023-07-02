@@ -53,7 +53,7 @@ Route::middleware(['auth', 'petugas'])->group(function () {
 
 Route::middleware(['auth', 'anggota'])->group(function () {
     Route::resource('/penyewaan', PenyewaanController::class);
-    // Route::get('/penyewaan-add', [PenyewaanController::class, 'create'])->name('penyewaan-add');
+    Route::get('/penyewaan-riwayat', [PenyewaanController::class, 'riwayatPesanan'])->name('penyewaan-riwayat');
     // Route::post('/penyewaan-store', [PenyewaanController::class, 'store'])->name('penyewaan-store');
 
 
