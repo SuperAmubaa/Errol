@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 // use App\Models\User;
 // use App\Models\Barang;
 use App\Models\Peminjaman;
@@ -17,14 +18,15 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-       
-
-        $ar_pinjam = DB::table('peminjaman')
-        ->join('users', 'users.id', '=', 'peminjaman.user_id')
-        ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
-        ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
+        // $ar_pinjam = DB::table('peminjaman')
+        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        // ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
+        // ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
         
-        ->get();
+        // ->get();
+
+        $ar_pinjam = Peminjaman::all();
+
         return view('peminjaman.index', compact('ar_pinjam'));
     }
 

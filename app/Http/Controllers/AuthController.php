@@ -28,12 +28,22 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'role' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
+        $role = null;
+        if ($request->role_id === 1){
+            $role = 1;
+        }elseif ($request->role_id === 2){
+            $role = 2;
+        }else{
+            $role = 3;
+        }
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $role,
         ]);
 
         Session::flash('status', 'success');
@@ -41,20 +51,20 @@ class AuthController extends Controller
        return redirect('/login');
     }
 
-    public function authenticating(Request $request)
-    {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-        ]);
+    // public function authenticating(Request $request)
+    // {
+    //     $credentials = $request->validate([
+    //         'username' => ['required'],
+    //         'password' => ['required'],
+    //     ]);
 
-        if (Auth::attempt($credentials)) {
-            if(Auth::user()->status != 'active'){
-                Session::flash('status', 'failed');
-                Session::flash('message', 'Your account is not active!');
-                Auth::logout();
-                return redirect('/login');
-            }
+    //     if (Auth::attempt($credentials)) {
+    //         if(Auth::user()->status != 'active'){
+    //             Session::flash('status', 'failed');
+    //             Session::flash('message', 'Your account is not active!');
+    //             Auth::logout();
+    //             return redirect('/login');
+    //         }
             // if(Auth::user()->role_id == 1) {
             //     return redirect('dashboard');
             // }
@@ -64,11 +74,11 @@ class AuthController extends Controller
             // }
             
             
-        }
+    //     }
 
-        Session::flash('status', 'failed');
-        Session::flash('message', 'gagal login');
-        Auth::logout();
-        return redirect('/login');
-    }
+    //     Session::flash('status', 'failed');
+    //     Session::flash('message', 'gagal login');
+    //     Auth::logout();
+    //     return redirect('/login');
+    // }
 }

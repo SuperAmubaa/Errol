@@ -1,12 +1,16 @@
 @extends('layouts.index')
 
 @section('content')
-    
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Jenis Denda</h1>
-  
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item">Denda</li>
+    </ol>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -31,7 +35,7 @@
                 <td>{{ $d->keterangan }}</td>
                 <td>{{ $d->tarif }}</td>
                 <td>
-                <a class="btn btn-success" href="{{route('denda.edit',$d->id)}}">Edit</a>  
+                <a class="btn btn-success" href="{{route('denda.edit',$d->id)}}"><i class="fas fa-edit"></i></a>  
             </td>
             </tr>
             @endforeach

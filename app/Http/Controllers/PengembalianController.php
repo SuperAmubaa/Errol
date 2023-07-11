@@ -19,16 +19,26 @@ class PengembalianController extends Controller
         // $data = Pengembalian::all();
         // return view('pengembalian.index', compact('data'));
 
+        // $ar_pengembalian = DB::table('pengembalian')
+        // ->join('peminjaman', 'pengembalian.peminjaman_id', '=', 'peminjaman.id')
+        // ->join('denda', 'denda.id', '=', 'pengembalian.denda_id')
+        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        // ->select('pengembalian.*', 'users.name AS us',  'denda.jenis AS jn')
+        // ->groupBy('user_id')
+        // ->get();
+        // return view('pengembalian.index',[ 'pengembalian' => $ar_pengembalian]);
+
         $ar_pengembalian = DB::table('pengembalian')
-        ->join('peminjaman', 'peminjaman.id', '=', 'pengembalian.peminjaman_id')
+        ->join('peminjaman', 'pengembalian.peminjaman_id', '=', 'peminjaman.id')
         ->join('denda', 'denda.id', '=', 'pengembalian.denda_id')
         ->join('users', 'users.id', '=', 'peminjaman.user_id')
         ->select('pengembalian.*', 'users.name AS us',  'denda.jenis AS jn')
         // ->select('pengembalian.*', 'peminjaman.user_id AS us',  'denda.jenis AS jn')
-        
+       
         ->get();
         return view('pengembalian.index', compact('ar_pengembalian'));
-    
+
+
     }
 
     /**

@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @php
-$rs1 = App\Models\Peminjaman::all();   
+$rs1 = App\Models\User::all();   
 $rs2 = App\Models\Denda::all();   
 
 @endphp
@@ -17,7 +17,7 @@ $rs2 = App\Models\Denda::all();
     <select class="form-control  @error('peminjaman_id') is-invalid @enderror userbox" name="peminjaman_id" >
         <option value="">--- Pilih Nama Penyewa ---</option>
         @foreach($rs1 as $row)
-        <option value="{{$row->id}}">{{$row->user_id}}</option>
+        <option value="{{$row->id}}">{{$row->name}}</option>
         @endforeach
       </select>
       @error('peminjaman_id')

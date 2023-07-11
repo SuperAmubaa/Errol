@@ -6,6 +6,10 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Peminjaman</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item">Peminjaman</li>
+    </ol>
   
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -27,8 +31,8 @@
             @foreach($ar_pinjam as $pj)
             <tr>
                 <td>{{ $pj->id}}</td>
-                <td>{{ $pj->us }}</td>
-                <td>{{ $pj->br }}</td>
+                <td>{{ $pj->user->name }}</td>
+                <td>{{ $pj->barang->nama }}</td>
                 <td>{{ $pj->tgl_pinjam }}</td>
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>

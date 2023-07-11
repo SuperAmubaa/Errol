@@ -27,9 +27,9 @@
         <tbody>
             @foreach($ar_pinjam as $pj)
             <tr>
-                <td>{{ $pj->id}}</td>
-                <td>{{Auth::user()->name}}</td>
-                <td>{{ $pj->br }}</td>
+                <td>{{ $loop->iteration}}</td>
+                <td>{{$pj->user->name}}</td>
+                <td>{{ $pj->barang->nama }}</td>
                 <td>{{ $pj->tgl_pinjam }}</td>
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>

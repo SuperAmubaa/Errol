@@ -63,13 +63,7 @@
                                     @enderror
                                             
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck"> {{ __('Remember Me') }}</label>
-                                                    
-                                            </div>
-                                        </div>
+                                    <br>
                                         <button type="submit" class="btn btn-md btn-primary">
                                             {{ __('Login') }}
                                         </button>
@@ -77,13 +71,7 @@
 
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                    </div>
+                                    <br>
                                     <div class="text-center">
                                         <a class="small" href="{{ route('register') }}">Create an Account!</a>
                                     </div>

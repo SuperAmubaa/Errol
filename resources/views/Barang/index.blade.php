@@ -7,6 +7,10 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item">Barang</li>
+    </ol>
   
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -54,9 +58,9 @@
                             <form method="POST" action="{{ route('barang.destroy',$br->id)}}">
                                 @csrf
                                 @method('delete')
-                            <a class="btn btn-info" href="{{route('barang.show',$br->id)}}">Detail</a>  
-                            <a class="btn btn-success" href="{{route('barang.edit',$br->id)}}">Edit</a>  
-                            <button class="btn btn-danger" onclick="return confirm('Anda Yakin Data di Hapus?')">Hapus</button>
+                            <a class="btn btn-info" href="{{route('barang.show',$br->id)}}"><i class="fas fa-eye"></i></a>  
+                            <a class="btn btn-success" href="{{route('barang.edit',$br->id)}}"><i class="fas fa-edit"></i></a>  
+                            <button class="btn btn-danger" onclick="return confirm('Anda Yakin Data di Hapus?')" ><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                         </tr>

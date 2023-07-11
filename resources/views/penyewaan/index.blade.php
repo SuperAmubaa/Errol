@@ -6,14 +6,17 @@ $rs1 = App\Models\Barang::all();
 @endphp
 
 <div class="container-fluid">
-
+    <h1 class="h2 mb-2 text-gray-800">List Barang </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item">List Barang</li>
+    </ol>
     <!-- Page Heading -->
    
   
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-2 text-gray-800">List Barang</h1>
             <a class="btn btn-success" href="{{route('penyewaan.create')}}">Sewa Barang</a>
         </div>
         <div class="card-body">
