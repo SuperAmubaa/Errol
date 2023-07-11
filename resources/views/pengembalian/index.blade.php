@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-    
+@include('sweetalert::alert')
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -31,7 +31,7 @@
         <tbody>
             @foreach($ar_pengembalian as $km)
             <tr>
-                <td>{{ $km->id}}</td>
+                <td>{{ $loop->iteration}}</td>
                 <td>{{ $km->us}}</td>
                 <td>{{ $km->tgl_kembali }}</td>
                 <td>{{ $km->jn }}</td>

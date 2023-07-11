@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-
+@include('sweetalert::alert')
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -30,7 +30,7 @@
         <tbody>
             @foreach($ar_denda as $d)
             <tr>
-                <td>{{ $d->id}}</td>
+                <td>{{ $loop->iteration}}</td>
                 <td>{{ $d->jenis }}</td>
                 <td>{{ $d->keterangan }}</td>
                 <td>{{ $d->tarif }}</td>

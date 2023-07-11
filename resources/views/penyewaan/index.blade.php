@@ -1,6 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
+@include('sweetalert::alert')
 @php
 $rs1 = App\Models\Barang::all();   
 @endphp
@@ -34,7 +35,7 @@ $rs1 = App\Models\Barang::all();
         <tbody>
             @foreach($rs1 as $br)
             <tr>
-                <td>{{ $br->id}}</td>
+                <td>{{ $loop->iteration}}</td>
                 <td width="30%">
                 @php
                 if(!empty($br->foto)){
@@ -51,13 +52,7 @@ $rs1 = App\Models\Barang::all();
                 <td>{{ $br->nama }}</td>
                 <td>{{ $br->harga }}</td>
                 <td>{{ $br->stok }}</td>
-                {{-- <td><button class="btn btn-info">Sewa</button></td> --}}
-                {{-- <td>
-                <form method="POST" action="{{route ('penyewaan-add',$br->id)}}">
-                    @csrf
-                <button class="btn btn-danger">Sewa</button>
-                </form>
-            </td>  --}}
+                
                
         
             </tr>

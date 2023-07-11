@@ -11,10 +11,10 @@ $bs1 = App\Models\Kategori::all();
 <form method="POST" action="{{ route('barang.update',$bs->id)}}" enctype="multipart/form-data">
 @csrf
 @method('put')
-<div class="form-group">
+{{-- <div class="form-group">
     <label>No</label>
     <input type="text" name="id" value="{{ $bs->id }}" class="form-control">
-</div>
+</div> --}}
 <div class="form-group">
     <label>Foto</label>
     <input type="file" name="foto" value="{{ $bs->foto }}" class="form-control">

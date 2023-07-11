@@ -40,6 +40,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
+    // Route::get('/kategori-delete/{id}', [KategoriController::class, 'delete'])->name('kategori-delete');
+
     Route::resource('/barang', BarangController::class); 
     Route::resource('/denda', DendaController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 

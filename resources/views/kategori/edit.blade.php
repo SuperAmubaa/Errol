@@ -7,10 +7,10 @@
 <form method="POST" action="{{ route('kategori.update',$rs->id)}}">
 @csrf
 @method('put')
-<div class="form-group">
+{{-- <div class="form-group">
     <label>No</label>
     <input type="text" name="id" value="{{ $rs->id }}" class="form-control">
-</div>
+</div> --}}
 <div class="form-group">
     <label>Nama</label>
     <input type="text" name="name" value="{{ $rs->name }}" class="form-control">

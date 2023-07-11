@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Denda;
 
 class DendaController extends Controller
@@ -45,7 +45,7 @@ class DendaController extends Controller
                 'tarif'=>$request->tarif,
             ]
             );
-            return redirect ('/denda');
+            return redirect ('/denda')->with('success', 'Denda Baru Telah di Tambahkan!');
     }
 
     /**
@@ -96,7 +96,7 @@ class DendaController extends Controller
                 'tarif'=>$request->tarif,
             ]
             );
-            return redirect ('/denda');
+            return redirect ('/denda')->with('success', 'Denda Berhasil di Ubah!');
     }
 
     /**
@@ -109,6 +109,6 @@ class DendaController extends Controller
     {
         DB::table('denda')->where('id',$id)->delete();
 
-        return redirect('/denda');
+        return redirect('/denda')->with('success', 'Denda Berhasil Di Hapus!');
     }
 }

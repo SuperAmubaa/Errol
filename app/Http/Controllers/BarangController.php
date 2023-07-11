@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -97,7 +97,7 @@ class BarangController extends Controller
                 'foto'=>$fileName,
             ]
             );
-            return redirect ('/barang');
+            return redirect ('/barang')->with('success', 'Barang Baru Berhasil di Tambahkan!');
     }
 
     /**
@@ -172,7 +172,7 @@ class BarangController extends Controller
                 'foto'=>$fileName,
             ]
             );
-            return redirect ('/barang');
+            return redirect ('/barang')->with('success', 'Barang Berhasil di Ubah!');
     }
 
     /**
@@ -185,6 +185,6 @@ class BarangController extends Controller
     {
         DB::table('barang')->where('id',$id)->delete();
 
-        return redirect('/barang');
+        return redirect('/barang')->with('success', 'Barang Berhasil di Hapus!');
     }
 }

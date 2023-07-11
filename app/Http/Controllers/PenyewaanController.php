@@ -60,7 +60,7 @@ class PenyewaanController extends Controller
                 
             ]
             );
-            return redirect ('/penyewaan');
+            return redirect ('/penyewaan')->with('success', 'Penyewaan Barang Berhasil Dilakukan! Silahkan Ambil Barang Di Toko!');
     }
 
     public function riwayatPesanan()

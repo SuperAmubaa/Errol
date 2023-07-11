@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-    
+@include('sweetalert::alert')
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -30,7 +30,7 @@
         <tbody>
             @foreach($ar_pinjam as $pj)
             <tr>
-                <td>{{ $pj->id}}</td>
+                <td>{{ $loop->iteration}}</td>
                 <td>{{ $pj->user->name }}</td>
                 <td>{{ $pj->barang->nama }}</td>
                 <td>{{ $pj->tgl_pinjam }}</td>

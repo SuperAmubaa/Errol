@@ -43,7 +43,7 @@ class KategoriController extends Controller
                 'name'=>$request->name,
             ]
             );
-            return redirect ('/kategori');
+            return redirect ('/kategori')->with('success', 'Kategori Baru di Tambahkan!');
     }
 
     /**
@@ -88,11 +88,11 @@ class KategoriController extends Controller
     {
         DB::table('kategori')->where('id',$id)->update(
             [
-                'id'=>$request->id,
+                
                 'name'=>$request->name,
             ]
             );
-            return redirect ('/kategori');
+            return redirect ('/kategori')->with('success', 'Kategori Berhasil Di Update!');
     }
 
     /**
@@ -105,6 +105,6 @@ class KategoriController extends Controller
     {
         DB::table('kategori')->where('id',$id)->delete();
 
-        return redirect('/kategori');
+        return redirect('/kategori')->with('success', 'Kategori Berhasil Di Hapus!');
     }
 }

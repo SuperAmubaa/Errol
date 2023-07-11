@@ -163,11 +163,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
          */
-
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -191,6 +192,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+    'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
         // ...
     ])->toArray(),
 

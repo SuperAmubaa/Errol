@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-    
+@include('sweetalert::alert')
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data User</h1>
@@ -28,7 +28,7 @@
         <tbody>
             @foreach($ar_user as $us)
             <tr>
-                <td>{{ $us->id}}</td>
+                <td>{{ $loop->iteration}}</td>
                 <td>{{ $us->name }}</td>
                 <td>{{ $us->email }}</td>
                 <td>{{ $us->rol }}</td>

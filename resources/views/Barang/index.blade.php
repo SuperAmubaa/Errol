@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-
+@include('sweetalert::alert')
 
 <div class="container-fluid">
 
@@ -35,7 +35,7 @@
                     <tbody>
                         @foreach($ar_barang as $br)
                         <tr>
-                            <td>{{ $br->id}}</td>
+                            <td>{{ $loop->iteration}}</td>
                             <td width="30%">
                             @php
                             if(!empty($br->foto)){
