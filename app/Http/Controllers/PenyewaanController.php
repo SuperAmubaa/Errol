@@ -58,6 +58,7 @@ class PenyewaanController extends Controller
                 'qty'=>$request->qty,
                 'tgl_pinjam'=>$request->tgl_pinjam,
                 'tgl_kembali'=>$request->tgl_kembali,
+               
                 
             ]
             );
@@ -66,12 +67,6 @@ class PenyewaanController extends Controller
 
     public function riwayatPesanan()
     {
-        //  $ar_pinjam = DB::table('peminjaman')
-        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
-        // ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
-        // ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
-        
-        // ->get();
         $current_user = Auth::user();
 
         $ar_pinjam = Peminjaman::where('user_id', $current_user->id)->get();

@@ -5,7 +5,8 @@
 
 @php
 $rs1 = App\Models\User::where('id', '!=', '1')->where('id', '!=', '2')->get();   
-$rs2 = App\Models\Barang::all();   
+$rs2 = App\Models\Barang::all();
+// $rs3 = App\Models\Denda::all();
 
 @endphp
 
@@ -41,6 +42,15 @@ $rs2 = App\Models\Barang::all();
       @enderror
 </div>
 <div class="form-group">
+    <label>Jumlah</label>
+    <input type="number" name="qty" min="1" max="5" value="{{old('qty')}}" class="form-control @error('qty') is-invalid @enderror">
+    @error('qty')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+<div class="form-group">
     <label>Tanggal Pinjam</label>
     <input type="date" name="tgl_pinjam" value="{{old('tgl_pinjam')}}" class="form-control @error('tgl_pinjam') is-invalid @enderror " >
     @error('tgl_pinjam')
@@ -58,6 +68,20 @@ $rs2 = App\Models\Barang::all();
     </div>
     @enderror
 </div>
+{{-- <div class="form-group">
+    <label for="denda_id" class="form-label">Denda</label>
+    <select class="form-control userbox @error('denda_id') is-invalid @enderror" name="denda_id" >
+        <option value="">--- Pilih Denda ---</option>
+        @foreach($rs3 as $dn)
+        <option value="{{$dn->id}}">{{$dn->jenis}}</option>
+        @endforeach
+      </select>
+      @error('denda_id')
+      <div class="invalid-feedback">
+          {{ $message }}
+      </div>
+      @enderror
+</div> --}}
 <button type="submit" name="proses" value="simpan" class="btn btn-primary">Sewa</button>
 </form>
 

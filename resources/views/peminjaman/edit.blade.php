@@ -44,13 +44,14 @@ $rs = App\Models\Denda::all();
         </div>
         <div class="form-group">
             <label for="denda_id" class="form-label">Denda</label>
-            <select class="form-control userbox @error('denda_id') is-invalid @enderror" name="denda_id" >
+            <select class="form-control userbox @error('denda') is-invalid @enderror" name="denda" >
                 <option value="">--- Pilih Denda ---</option>
-                @foreach($rs as $dn)
-                <option value="{{$dn->id}}">{{$dn->jenis}}</option>
-                @endforeach
+                <option value="Tidak Ada Denda">Tidak ada Denda</option>
+                <option value="Keterlambatan">Keterlambatan</option>
+                <option value="Kerusakan">Kerusakan</option>
+                <option value="Kehilangan">Kehilangan</option>
               </select>
-              @error('denda_id')
+              @error('denda')
               <div class="invalid-feedback">
                   {{ $message }}
               </div>
@@ -67,7 +68,7 @@ $rs = App\Models\Denda::all();
     <label>Update Status</label>
     <select class="form-control @error ('status') is-invalid @enderror" name="status" >
         <option selected>--- Update Status ---</option>
-        @foreach (['pending', 'dipinjam', 'kembali'] as $item)
+        @foreach (['Pending', 'Dipinjam', 'Kembali'] as $item)
         <option value="{{ $item }}" {{ $item == $pj->status ? 'selected' : ''}}>{{ $item }}</option>
         @endforeach
       </select>

@@ -18,12 +18,6 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        // $ar_pinjam = DB::table('peminjaman')
-        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
-        // ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
-        // ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
-        
-        // ->get();
 
         $ar_pinjam = Peminjaman::all();
 
@@ -120,7 +114,7 @@ class PeminjamanController extends Controller
                 // 'tgl_kembali'=>$request->tgl_kembali,
                 'status'=>$request->status,
                 'tgl_pengembalian'=>$request->tgl_pengembalian,
-                'denda_id'=>$request->denda_id,
+                'denda'=>$request->denda,
                 'tarif'=>$request->tarif,
 
             ]

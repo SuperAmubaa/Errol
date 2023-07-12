@@ -21,7 +21,11 @@ return new class extends Migration
             $table->foreign('barang_id')->references('id')->on('barang');
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali');
-            $table->enum('status', ['dipinjam', 'kembali']);
+            $table->enum('status', ['pending','dipinjam', 'kembali']);
+            $table->date('tgl_pengembalian');
+            $table->unsignedBigInteger('denda_id');
+            $table->foreign('denda_id')->references('id')->on('denda');
+            $table->decimal('tarif');
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>
                 <td>{{ $pj->tgl_pengembalian }}</td>
-                <td>{{ $pj->denda_id }}</td>
+                <td>{{ $pj->denda }}</td>
                 <td>{{ $pj->tarif }}</td>
                 <td>
                     {{-- tombol --}}
