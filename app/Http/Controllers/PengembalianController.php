@@ -16,17 +16,9 @@ class PengembalianController extends Controller
     public function index()
     {
 
-        // $data = Pengembalian::all();
-        // return view('pengembalian.index', compact('data'));
+        // $ar_kembali = Pengembalian::all();
 
-        // $ar_pengembalian = DB::table('pengembalian')
-        // ->join('peminjaman', 'pengembalian.peminjaman_id', '=', 'peminjaman.id')
-        // ->join('denda', 'denda.id', '=', 'pengembalian.denda_id')
-        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
-        // ->select('pengembalian.*', 'users.name AS us',  'denda.jenis AS jn')
-        // ->groupBy('user_id')
-        // ->get();
-        // return view('pengembalian.index',[ 'pengembalian' => $ar_pengembalian]);
+        // return view('pengembalian.index', compact('ar_kembali'));
 
         $ar_pengembalian = DB::table('pengembalian')
         ->join('peminjaman', 'pengembalian.peminjaman_id', '=', 'peminjaman.id')

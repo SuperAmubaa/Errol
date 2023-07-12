@@ -17,9 +17,13 @@ class Denda extends Model
         'tarif',
     ];
     
-    public function pengembalian()
+    // public function pengembalian()
+    //     {
+    //         return $this->hasMany(Pengembalian::class);
+    //     }
+    public function peminjaman()
         {
-            return $this->hasMany(Pengembalian::class);
+            return $this->hasMany(Peminjaman::class);
         }
 }
 

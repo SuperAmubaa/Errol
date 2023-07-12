@@ -19,11 +19,15 @@
             <thead>
             <tr>
             <th>No</th>
-            <th>Nama Peminjam</th>
+            <th>Penyewa</th>
             <th>Barang</th>
-            <th>Tanggal Pinjam</th>
-            <th>Tanggal Kembali</th>
+            <th>QTY</th>
+            <th>Pinjam</th>
+            <th>Kembali</th>
             <th>Status</th>
+            <th>Return</th>
+            <th>Denda</th>
+            <th>Tarif</th>
             <th>Konfirmasi</th>
 
         </tr>
@@ -33,9 +37,13 @@
                 <td>{{ $loop->iteration}}</td>
                 <td>{{ $pj->user->name }}</td>
                 <td>{{ $pj->barang->nama }}</td>
+                <td>{{ $pj->qty}}</td>
                 <td>{{ $pj->tgl_pinjam }}</td>
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>
+                <td>{{ $pj->tgl_pengembalian }}</td>
+                <td>{{ $pj->denda_id }}</td>
+                <td>{{ $pj->tarif }}</td>
                 <td>
                     {{-- tombol --}}
                     <a class="btn btn-primary" href="{{ route ('peminjaman.edit',$pj->id)}}">Konfirmasi</a>  

@@ -14,9 +14,13 @@ class Peminjaman extends Model
     protected $fillable = [
         'user_id',
         'barang_id',
+        'qty',
         'tgl_pinjam',
         'tgl_kembali',
         'status',
+        'tgl_pengembalian',
+        'denda_id',
+        'tarif',
         
     ];
     public function user()
@@ -31,11 +35,9 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Barang::class);
     }
-
-    public function update_status($status)
+    public function denda()
     {
-        $this->db->where('status', $status);
-        $this->db->update('peminjaman');
-
+        return $this->belongsTo(Denda::class);
     }
+   
 }

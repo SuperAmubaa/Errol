@@ -55,6 +55,7 @@ class PenyewaanController extends Controller
                 'id'=>$request->id,
                 'user_id'=>$request->user_id,
                 'barang_id'=>$request->barang_id,
+                'qty'=>$request->qty,
                 'tgl_pinjam'=>$request->tgl_pinjam,
                 'tgl_kembali'=>$request->tgl_kembali,
                 
