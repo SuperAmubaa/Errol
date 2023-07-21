@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @php
-$rs1 = App\Models\User::where('id', '!=', '1')->where('id', '!=', '2')->get();   
+
 $rs2 = App\Models\Barang::all();
 // $rs3 = App\Models\Denda::all();
 
@@ -13,20 +13,7 @@ $rs2 = App\Models\Barang::all();
 <h3>Sewa Barang</h3>
 <form method="POST" action="{{ route('penyewaan.store')}}" >
     @csrf
-<div class="form-group">
-    <label for="user" class="form-label">Nama Penyewa</label>
-    <select class="form-control  @error('user_id') is-invalid @enderror userbox" name="user_id" >
-        <option value="">--- Pilih Nama Penyewa ---</option>
-        @foreach($rs1 as $us)
-        <option value="{{$us->id}}">{{$us->name}}</option>
-        @endforeach
-      </select>
-      @error('user_id')
-      <div class="invalid-feedback">
-          {{ $message }}
-      </div>
-      @enderror
-</div>
+
 <div class="form-group">
     <label for="barang" class="form-label">Barang</label>
     <select class="form-control userbox @error('barang_id') is-invalid @enderror" name="barang_id" >

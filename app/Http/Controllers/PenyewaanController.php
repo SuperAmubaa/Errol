@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,11 @@ class PenyewaanController extends Controller
     public function index()
     {
         // $users = User::all();
-        return view('penyewaan.index');
+        // return view('penyewaan.index');
+
+        $ar_pinjam = Peminjaman::all();
+
+        return view('penyewaan.index', compact('ar_pinjam'));
     }
 
     /**
@@ -46,23 +51,40 @@ class PenyewaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request ) 
     {
-     
-        
-        DB::table('peminjaman')->insert(
-            [
-                'id'=>$request->id,
-                'user_id'=>$request->user_id,
-                'barang_id'=>$request->barang_id,
-                'qty'=>$request->qty,
-                'tgl_pinjam'=>$request->tgl_pinjam,
-                'tgl_kembali'=>$request->tgl_kembali,
-               
-                
-            ]
-            );
-            return redirect ('/penyewaan')->with('success', 'Penyewaan Barang Berhasil Dilakukan! Silahkan Ambil Barang Di Toko!');
+        $barangs = DB::table('barang')->where('id', $request->barang_id)->get();
+
+        if($barangs){
+            $current_user = Auth::user()->id;
+
+
+            DB::table('peminjaman')->insert(
+                [
+                    'id'=>$request->id,
+                    'user_id'=>$current_user,
+                    'barang_id'=>$request->barang_id,
+                    'qty'=>$request->qty,
+                    'tgl_pinjam'=>$request->tgl_pinjam,
+                    'tgl_kembali'=>$request->tgl_kembali,
+
+                ]);
+
+
+
+                $stok_now = $barangs->first()->stok;
+                $stok_new = $stok_now - $request->qty;
+
+                DB::table('barang')->where('id',$request->barang_id)->update([
+                    'stok'=>$stok_new
+                ]);
+
+
+                return redirect ('/penyewaan')->with('success', 'Penyewaan Barang Berhasil Dilakukan! Silahkan Ambil Barang Di Toko!');
+        } else{
+            return redirect ('/penyewaan')->with('success', 'Barang Yang Anda Sewa Tidak Ditemukan!');
+        }
+
     }
 
     public function riwayatPesanan()
@@ -86,7 +108,7 @@ class PenyewaanController extends Controller
         ->join('users', 'users.id', '=', 'peminjaman.user_id')
         ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
         ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
-        
+
         ->where('users.id','=',$id)
         ->get();
 
