@@ -1,7 +1,11 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Form Kategori</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/kategori')}}">Kategori Barang</a></li>
+    <li class="breadcrumb-item">Tambah Kategori</li>
+</ol>
 <form method="POST" action="{{ route('kategori.store')}}">
 @csrf
 <div class="form-group">

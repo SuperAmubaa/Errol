@@ -5,8 +5,11 @@
 $rs1 = App\Models\Kategori::all();   
 @endphp
 
-
-<h3>Form Barang</h3>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="{{ url('/barang')}}">Barang</a></li>
+<li class="breadcrumb-item">Tambah Barang</li>
+</ol>
 {{-- @if($errors->any())
 <div class="alert alert-danger">
     <ul>

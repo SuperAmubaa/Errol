@@ -11,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/')}}">
+        <a class="nav-link" href="{{ url('/beranda')}}">
             <i class="fas fa-fw fa-home"></i>
             <span>Dashboard</span></a>
     </li>

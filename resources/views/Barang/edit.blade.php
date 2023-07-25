@@ -6,7 +6,11 @@ $bs1 = App\Models\Kategori::all();
 @endphp
 
 
-<h3>Edit Barang</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/barang')}}">Barang</a></li>
+    <li class="breadcrumb-item">Edit Barang</li>
+    </ol>
 @foreach($data as $bs)
 <form method="POST" action="{{ route('barang.update',$bs->id)}}" enctype="multipart/form-data">
 @csrf

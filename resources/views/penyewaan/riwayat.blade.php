@@ -7,7 +7,7 @@
     <!-- Page Heading -->
    
       <ol class="breadcrumb mb-4">
-          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
           <li class="breadcrumb-item">Riwayat Pesanan</li>
       </ol>
   

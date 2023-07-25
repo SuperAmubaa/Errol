@@ -1,7 +1,11 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Form Denda</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/denda')}}">Denda</a></li>
+    <li class="breadcrumb-item">Tambah Denda</li>
+    </ol>
 <form method="POST" action="{{ route('denda.store')}}">
 @csrf
 <div class="form-group">

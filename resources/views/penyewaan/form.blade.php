@@ -10,7 +10,11 @@ $rs2 = App\Models\Barang::all();
 
 @endphp
 
-<h3>Sewa Barang</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/penyewaan')}}">Penyewaan</a></li>
+    <li class="breadcrumb-item">Sewa Barang</li>
+    </ol>
 <form method="POST" action="{{ route('penyewaan.store')}}" >
     @csrf
 

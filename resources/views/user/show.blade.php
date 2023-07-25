@@ -2,6 +2,11 @@
 
 @section('content')
 @foreach($ar_user as $us)
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+  <li class="breadcrumb-item"><a href="{{ url('/user')}}">User</a></li>
+  <li class="breadcrumb-item">Detail User</li>
+  </ol>
 <div class="card" style="width: 18rem;">
 
     {{-- @php

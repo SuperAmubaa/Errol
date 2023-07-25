@@ -1,7 +1,11 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Edit Kategori</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/kategori')}}">Kategori Barang</a></li>
+    <li class="breadcrumb-item">Edit Kategori</li>
+</ol>
 @foreach($data as $rs)
 
 <form method="POST" action="{{ route('kategori.update',$rs->id)}}">

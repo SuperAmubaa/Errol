@@ -5,7 +5,11 @@
 $rs = App\Models\Denda::all();   
 @endphp
 
-<h3>Update Status</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/peminjaman')}}">Peminjaman</a></li>
+    <li class="breadcrumb-item">Konfirmasi</li>
+    </ol>
 @foreach($ar_pinjam as $pj)
 <form method="POST" action="{{ route('peminjaman.update',$pj->id)}}">
 @csrf

@@ -1,6 +1,13 @@
 @extends('layouts.index')
 @section('content')
 @foreach($ar_barang as $br)
+
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+  <li class="breadcrumb-item"><a href="{{ url('/barang')}}">Barang</a></li>
+  <li class="breadcrumb-item">Detail Barang</li>
+  </ol>
+
 <div class="card" style="width: 18rem;">
     @php
     if(!empty($br->foto)){

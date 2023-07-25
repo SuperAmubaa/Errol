@@ -6,10 +6,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h2 mb-2 text-gray-800">Kategori Barang</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-        <li class="breadcrumb-item">Kategori</li>
+        <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+        <li class="breadcrumb-item">Kategori Barang</li>
     </ol>
   
     <!-- DataTales Example -->

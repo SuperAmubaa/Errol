@@ -4,8 +4,11 @@
 @php
 $rs1 = App\Models\Roles::all();   
 @endphp
-
-<h3>Form User</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/user')}}">User</a></li>
+    <li class="breadcrumb-item">Tambah User</li>
+    </ol>
 <form method="POST" action="{{ route('user.store')}}">
 @csrf
 <div class="form-group">

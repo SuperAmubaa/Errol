@@ -1,7 +1,11 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Edit Denda</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/denda')}}">Denda</a></li>
+    <li class="breadcrumb-item">Edit Denda</li>
+    </ol>
 @foreach($data as $dn)
 
 <form method="POST" action="{{ route('denda.update',$dn->id)}}">

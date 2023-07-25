@@ -22,9 +22,13 @@ use App\Http\Controllers\PengembalianController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/beranda', function () {
     return view('layouts.beranda');
 })->middleware('auth')->name('beranda');
+
+Route::get('/', function () {
+    return view('frontend.index');
+});
 
 
 Route::middleware('guest')->group(function () {
@@ -51,10 +55,6 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::get('peminjaman-pdf',[PeminjamanController::class, 'peminjamanPDF']);
     Route::resource('/pengembalian', PengembalianController::class); 
 
-    //Peminjaman
-    //  Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman-index');
-    //  Route::get('peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name('peminjaman/edit');
-    //  Route::get('peminjaman/edit/{id}', [PeminjamanController::class, 'update'])->name('peminjaman/update');
 
 });
 
@@ -64,6 +64,7 @@ Route::middleware(['auth', 'anggota'])->group(function () {
     // Route::post('/penyewaan-store', [PenyewaanController::class, 'store'])->name('penyewaan-store');
 
 
+    
 });
 
 

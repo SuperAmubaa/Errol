@@ -5,7 +5,11 @@
 $rs1 = App\Models\Roles::all();   
 @endphp
 
-<h3>Edit Barang</h3>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/beranda">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/user')}}">User</a></li>
+    <li class="breadcrumb-item">Edit User</li>
+    </ol>
 @foreach($data as $us)
 <form method="POST" action="{{ route('user.update',$us->id)}}" >
 @csrf

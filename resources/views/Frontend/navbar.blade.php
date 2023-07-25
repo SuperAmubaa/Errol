@@ -1,32 +1,19 @@
-<div class="row">
-    <div class="col-md-12">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">ERROL</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{url('#')}}">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{url('#')}}">Items</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{url('#')}}">Category</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-          </nav>
-    </div>
-</div>
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top pb-3" id="mainNav">
+      <div class="container">
+          <a class="navbar-brand" href="#page-top">Errol Outdoor</a>
+          <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#galeri">Galery</a></li>
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('login')}}">Login</a></li>
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('register')}}">Register</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
