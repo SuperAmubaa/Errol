@@ -70,8 +70,6 @@ class PenyewaanController extends Controller
 
                 ]);
 
-
-
                 $stok_now = $barangs->first()->stok;
                 $stok_new = $stok_now - $request->qty;
 

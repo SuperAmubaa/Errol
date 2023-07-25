@@ -10,10 +10,7 @@ $rs1 = App\Models\Roles::all();
 <form method="POST" action="{{ route('user.update',$us->id)}}" >
 @csrf
 @method('put')
-<div class="form-group">
-    <label>No</label>
-    <input type="text" name="id" value="{{ $us->id }}" class="form-control">
-</div>
+
 <div class="form-group">
     <label>Nama</label>
     <input type="text" name="name" value="{{ $us->name }}" class="form-control">

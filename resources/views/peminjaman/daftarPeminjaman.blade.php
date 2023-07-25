@@ -1,21 +1,12 @@
-@extends('layouts.index')
-
-@section('content')
 
 <div class="container-fluid">
-
     <!-- Page Heading -->
-   
-      <ol class="breadcrumb mb-4">
-          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item">Riwayat Pesanan</li>
-      </ol>
-  
+    <h1 align="center">Peminjaman</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table border="1" align="center" cellpadding="5">
             <thead>
             <tr>
             <th>No</th>
@@ -28,7 +19,7 @@
             <th>Return</th>
             <th>Denda</th>
             <th>Tarif</th>
-            <th>Action</th>
+           
 
         </tr>
         <tbody>
@@ -42,11 +33,8 @@
                 <td>{{ $pj->tgl_kembali }}</td>
                 <td>{{ $pj->status }}</td>
                 <td>{{ $pj->tgl_pengembalian }}</td>
-                <td>{{ $pj->denda_id }}</td>
+                <td>{{ $pj->denda }}</td>
                 <td>{{ $pj->tarif }}</td>
-                <td>
-                    <a class="btn btn-info" href="{{route('penyewaan.show',$pj->id)}}">Detail</a> 
-                </td>
             </tr>
             @endforeach
         </tbody>
@@ -55,6 +43,3 @@
 </div>
         </div>
     </div>
-  
-
-@endsection

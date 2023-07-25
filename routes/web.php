@@ -26,6 +26,7 @@ Route::get('/', function () {
     return view('layouts.beranda');
 })->middleware('auth')->name('beranda');
 
+
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'authenticating']);
@@ -45,6 +46,9 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/barang', BarangController::class); 
     Route::resource('/denda', DendaController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 
+    Route::get('/exportpeminjaman',[PeminjamanController::class, 'peminjamanExcel']);
+    Route::get('/generate-pdf',[PeminjamanController::class, 'generatePDF']);
+    Route::get('peminjaman-pdf',[PeminjamanController::class, 'peminjamanPDF']);
     Route::resource('/pengembalian', PengembalianController::class); 
 
     //Peminjaman

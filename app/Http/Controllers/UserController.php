@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -99,7 +99,6 @@ class UserController extends Controller
     {
         DB::table('users')->where('id',$id)->update(
             [
-                'id'=>$request->id,
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'role_id'=>$request->role_id,

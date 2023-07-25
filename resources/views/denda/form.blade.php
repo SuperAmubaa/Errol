@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-<h3>Form Kategori</h3>
+<h3>Form Denda</h3>
 <form method="POST" action="{{ route('denda.store')}}">
 @csrf
 <div class="form-group">

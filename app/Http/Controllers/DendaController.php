@@ -90,7 +90,7 @@ class DendaController extends Controller
     {
         DB::table('denda')->where('id',$id)->update(
             [
-                'id'=>$request->id,
+               
                 'jenis'=>$request->jenis,
                 'keterangan'=>$request->keterangan,
                 'tarif'=>$request->tarif,

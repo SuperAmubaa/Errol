@@ -8,10 +8,6 @@
 @csrf
 @method('put')
 <div class="form-group">
-    <label>No</label>
-    <input type="text" name="id" value="{{ $dn->id }}" class="form-control">
-</div>
-<div class="form-group">
     <label>Jenis</label>
     <input type="text" name="jenis" value="{{ $dn->jenis }}" class="form-control">
 </div>

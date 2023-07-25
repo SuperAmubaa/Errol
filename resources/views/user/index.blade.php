@@ -36,9 +36,9 @@
                 <form method="POST" action="{{ route('user.destroy',$us->id)}}">
                     @csrf
                     @method('delete')
-                <a class="btn btn-info" href="{{route('user.show',$us->id)}}">Detail</a>  
-                <a class="btn btn-success" href="{{route('user.edit',$us->id)}}">Edit</a>  
-                <button class="btn btn-danger" onclick="return confirm('Anda Yakin Data di Hapus?')">Hapus</button>
+                    <a class="btn btn-info" href="{{route('user.show',$us->id)}}"><i class="fas fa-eye"></i></a>  
+                    <a class="btn btn-success" href="{{route('user.edit',$us->id)}}"><i class="fas fa-edit"></i></a>  
+                    <button class="btn btn-danger" onclick="return confirm('Anda Yakin Data di Hapus?')" ><i class="fas fa-trash"></i></button>
                 </form>
             </td>
             </tr>

@@ -13,6 +13,11 @@
   
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+        <div class="card-header col-auto py-3">
+            <a class="btn btn-info" href="{{ url('/exportpeminjaman')}}">Export Excel</a>  
+             <a class="btn btn-danger" href="{{ url ('peminjaman-pdf')}}">Export PDF</a>  
+        </div>
+       
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
