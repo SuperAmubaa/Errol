@@ -41,7 +41,7 @@ $rs2 = App\Models\Barang::all();
     </div>
     @enderror
 </div>
-<div class="form-group">
+{{-- <div class="form-group">
     <label>Tanggal Pinjam</label>
     <input type="date" name="tgl_pinjam" value="{{old('tgl_pinjam')}}" class="form-control @error('tgl_pinjam') is-invalid @enderror " >
     @error('tgl_pinjam')
@@ -49,7 +49,7 @@ $rs2 = App\Models\Barang::all();
         {{ $message }}
     </div>
     @enderror
-</div>
+</div> --}}
 <div class="form-group">
     <label>Tanggal Kembali</label>
     <input type="date" name="tgl_kembali" value="{{old('tgl_kembali')}}" class="form-control @error('tgl_kembali') is-invalid @enderror " >

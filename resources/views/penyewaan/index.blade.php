@@ -49,7 +49,7 @@ $rs1 = App\Models\Barang::all();
                 @endphp
                 </td>
                 <td>{{ $br->nama }}</td>
-                <td>{{ $br->harga }}</td>
+                <td>Rp.{{ $br->harga }}</td>
                 <td>{{ $br->stok }}</td>
                 
                

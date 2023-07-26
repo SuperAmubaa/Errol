@@ -44,10 +44,21 @@
                 <td>{{ $pj->qty}}</td>
                 <td>{{ $pj->tgl_pinjam }}</td>
                 <td>{{ $pj->tgl_kembali }}</td>
-                <td>{{ $pj->status }}</td>
+                <td>
+                    @if($pj->status == 'pending')
+                    <a class="badge text-white bg-danger"> Pending
+                    </a>
+                    @elseif($pj->status == 'dipinjam')
+                    <a class="badge text-white bg-primary"> Dipinjam
+                    </a>
+                    @elseif('kembali')
+                    <a class="badge text-white bg-info"> Kembali
+                    </a>
+                   @endif
+                </td>
                 <td>{{ $pj->tgl_pengembalian }}</td>
                 <td>{{ $pj->denda }}</td>
-                <td>{{ $pj->tarif }}</td>
+                <td>Rp.{{ $pj->tarif }}</td>
                 <td>
                     {{-- tombol --}}
                     <a class="btn btn-primary" href="{{ route ('peminjaman.edit',$pj->id)}}">Konfirmasi</a>  

@@ -52,8 +52,8 @@
                             <td>{{ $br->kat }}</td>
                             <td>{{ $br->nama }}</td>
                             <td>{{ $br->stok }}</td>
-                            <td>{{ $br->harga }}</td>
-                            <td>{{ $br->beli }}</td>
+                            <td>Rp.{{ $br->harga }}</td>
+                            <td>Rp.{{ $br->beli }}</td>
                             <td>
                             <form method="POST" action="{{ route('barang.destroy',$br->id)}}">
                                 @csrf

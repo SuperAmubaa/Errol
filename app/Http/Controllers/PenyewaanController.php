@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,7 @@ class PenyewaanController extends Controller
 
         if($barangs){
             $current_user = Auth::user()->id;
+            $rent_date = Carbon::now()->toDateString();
 
 
             DB::table('peminjaman')->insert(
@@ -65,7 +67,7 @@ class PenyewaanController extends Controller
                     'user_id'=>$current_user,
                     'barang_id'=>$request->barang_id,
                     'qty'=>$request->qty,
-                    'tgl_pinjam'=>$request->tgl_pinjam,
+                    'tgl_pinjam'=>$rent_date,
                     'tgl_kembali'=>$request->tgl_kembali,
 
                 ]);

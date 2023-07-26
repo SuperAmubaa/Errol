@@ -118,8 +118,10 @@ class PeminjamanController extends Controller
                 'denda'=>$request->denda,
                 'tarif'=>$request->tarif,
 
-            ]
-            );
+            ]);
+
+
+
             return redirect ('/peminjaman')->with('success', 'Peminjaman Telah Berhasil Diperbarui');
     }
 
