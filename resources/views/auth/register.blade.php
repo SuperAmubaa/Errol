@@ -80,10 +80,10 @@
                                @enderror
                                 </div>
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label>Upload KTP</label>
                                     <input id="foto" type="file" name="foto" value="" class="form-control ">
-                                </div> --}}
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

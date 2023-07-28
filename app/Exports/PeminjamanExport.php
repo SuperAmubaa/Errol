@@ -14,14 +14,14 @@ class PeminjamanExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        // return Peminjaman::all();
-        $ar_pinjam = DB::table('peminjaman')
-        ->join('users', 'users.id', '=', 'peminjaman.user_id')
-        ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
-        ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
+        return Peminjaman::all();
+        // $ar_pinjam = DB::table('peminjaman')
+        // ->join('users', 'users.id', '=', 'peminjaman.user_id')
+        // ->join('barang', 'barang.id', '=', 'peminjaman.barang_id')
+        // ->select('peminjaman.*', 'users.name AS us', 'barang.nama AS br')
         
-        ->get();
-        return view('peminjaman.index', compact('ar_pinjam'));
+        // ->get();
+        // return view('peminjaman.index', compact('ar_pinjam'));
 
         // $ar_pinjam = Peminjaman::all();
         // return view('peminjaman.index', compact('ar_pinjam'));

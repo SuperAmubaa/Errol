@@ -53,7 +53,7 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::get('exportpeminjaman',[PeminjamanController::class, 'peminjamanExcel']);
     Route::get('generate-pdf',[PeminjamanController::class, 'generatePDF']);
     Route::get('peminjaman-pdf',[PeminjamanController::class, 'peminjamanPDF']);
-    Route::resource('/pengembalian', PengembalianController::class); 
+    // Route::resource('/pengembalian', PengembalianController::class); 
 
 
 });
