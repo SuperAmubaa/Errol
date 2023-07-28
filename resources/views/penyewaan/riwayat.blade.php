@@ -53,8 +53,8 @@
                    @endif
                 </td>
                 <td>{{ $pj->tgl_pengembalian }}</td>
-                <td>{{ $pj->denda_id }}</td>
-                <td>{{ $pj->tarif }}</td>
+                <td>{{ $pj->denda }}</td>
+                <td>Rp.{{ $pj->tarif }}</td>
                 <td>
                     <a class="btn btn-info" href="{{route('penyewaan.show',$pj->id)}}">Detail</a> 
                 </td>

@@ -9,7 +9,7 @@ $rs1 = App\Models\Roles::all();
     <li class="breadcrumb-item"><a href="{{ url('/user')}}">User</a></li>
     <li class="breadcrumb-item">Tambah User</li>
     </ol>
-<form method="POST" action="{{ route('user.store')}}">
+<form method="POST" action="{{ route('user.store')}}" enctype="multipart/form-data" >
 @csrf
 <div class="form-group">
     <label>Nama</label>
@@ -22,6 +22,18 @@ $rs1 = App\Models\Roles::all();
 <div class="form-group">
     <label>Password</label>
     <input type="password" name="password" value="" class="form-control">
+</div>
+<div class="form-group">
+    <label>Phone</label>
+    <input type="text" name="phone" value="" class="form-control">
+</div>
+<div class="form-group">
+    <label>Alamat</label>
+    <input type="text" name="address" value="" class="form-control">
+</div>
+<div class="form-group">
+    <label>Upload KTP</label>
+    <input type="file" name="foto" value="" class="form-control ">
 </div>
 <div class="form-group">
     <label>Role</label>

@@ -30,7 +30,7 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             // 'role' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
+//role
         $role = null;
         if ($request->role_id === 1){
             $role = 1;
@@ -39,11 +39,27 @@ class AuthController extends Controller
         }else{
             $role = 3;
         }
+//foto
+        if(!empty($request->foto)){
+            $request->validate(
+                ['foto'=> 'image|mimes:png,jpg|max:2048',
+                ]);
+            $fileName = $request->nama.'.'
+            .$request->foto->extension();
+            $request->foto
+            ->move(public_path('images'),$fileName);
+            }else {
+                $fileName = '';
+            }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $role,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'foto'=>$fileName,
         ]);
 
         Session::flash('status', 'success');
@@ -51,34 +67,4 @@ class AuthController extends Controller
        return redirect('/login');
     }
 
-    // public function authenticating(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'username' => ['required'],
-    //         'password' => ['required'],
-    //     ]);
-
-    //     if (Auth::attempt($credentials)) {
-    //         if(Auth::user()->status != 'active'){
-    //             Session::flash('status', 'failed');
-    //             Session::flash('message', 'Your account is not active!');
-    //             Auth::logout();
-    //             return redirect('/login');
-    //         }
-            // if(Auth::user()->role_id == 1) {
-            //     return redirect('dashboard');
-            // }
-
-            // if(Auth::user()->role_id == 2) {
-            //     return redirect('profile');
-            // }
-            
-            
-    //     }
-
-    //     Session::flash('status', 'failed');
-    //     Session::flash('message', 'gagal login');
-    //     Auth::logout();
-    //     return redirect('/login');
-    // }
 }

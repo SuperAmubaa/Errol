@@ -65,12 +65,6 @@ class BarangController extends Controller
             ],
         );
        
-        // if ($foto = $request->file('foto')) {
-        //     $destinationPath = 'images/';
-        //     $profileImage = date('YmdHis') . "." . $foto->getClientOriginalExtension();
-        //     $foto->move($destinationPath, $profileImage);
-        //     $input['foto'] = "$profileImage";
-        // }
 
            if(!empty($request->foto)){
             $request->validate(

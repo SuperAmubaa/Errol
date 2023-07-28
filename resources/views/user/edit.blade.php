@@ -11,7 +11,7 @@ $rs1 = App\Models\Roles::all();
     <li class="breadcrumb-item">Edit User</li>
     </ol>
 @foreach($data as $us)
-<form method="POST" action="{{ route('user.update',$us->id)}}" >
+<form method="POST" action="{{ route('user.update',$us->id)}}" enctype="multipart/form-data" >
 @csrf
 @method('put')
 
@@ -22,6 +22,18 @@ $rs1 = App\Models\Roles::all();
 <div class="form-group">
     <label>Email</label>
     <input type="email" name="email" value="{{ $us->email }}" class="form-control">
+</div>
+<div class="form-group">
+    <label>Phone</label>
+    <input type="text" name="phone" value="{{ $us->phone }}" class="form-control">
+</div>
+<div class="form-group">
+    <label>Alamat</label>
+    <input type="text" name="address" value="{{ $us->address }}" class="form-control">
+</div>
+<div class="form-group">
+    <label>Upload KTP</label>
+    <input type="file" name="foto" value="{{ $us->foto }}" class="form-control ">
 </div>
 <div class="form-group">
     <label>Role</label>

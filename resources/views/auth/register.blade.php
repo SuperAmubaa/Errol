@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Errol Outdoor</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form method="POST" action="{{ route('daftar') }}">
+                            <form method="POST" action="{{ route('daftar') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="form-group ">
@@ -59,6 +59,31 @@
                                    </span>
                                @enderror
                                 </div>
+                                <div class="form-group ">
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}"
+                                    required autocomplete="phone" placeholder="Enter Your Phone Number" >
+
+                               @error('phone')
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                   </span>
+                               @enderror
+                                </div>
+                                <div class="form-group ">
+                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"
+                                    required autocomplete="address" placeholder="Enter Your Address" >
+
+                               @error('address')
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                   </span>
+                               @enderror
+                                </div>
+
+                                {{-- <div class="form-group">
+                                    <label>Upload KTP</label>
+                                    <input id="foto" type="file" name="foto" value="" class="form-control ">
+                                </div> --}}
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

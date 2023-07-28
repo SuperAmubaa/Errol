@@ -43,6 +43,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        if(!empty($request->foto)){
+            $request->validate(
+                ['foto'=> 'image|mimes:png,jpg|max:2048',
+                ]);
+            $fileName = $request->nama.'.'
+            .$request->foto->extension();
+            $request->foto
+            ->move(public_path('images'),$fileName);
+            }else {
+                $fileName = '';
+            }
+
         DB::table('users')->insert(
             [
                 'id'=>$request->id,
@@ -50,6 +63,9 @@ class UserController extends Controller
                 'email'=>$request->email,
                 'password' => Hash::make($request->password),
                 'role_id'=>$request->role_id,
+                'phone'=>$request->phone,
+                'address'=>$request->address,
+                'foto'=>$fileName,
             ]
             );
             return redirect ('/user');
@@ -97,11 +113,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!empty($request->foto)){
+            $request->validate(
+                ['foto'=> 'image|mimes:png,jpg|max:2048']
+            );
+
+            // $data_foto = barang::where('id',$id);
+            // File::delete(public_path('foto'). '/'. $data_foto->foto);
+
+            $fileName = $request->nama.'.'.$request->foto->extension();
+            $request->foto->move(public_path('images'),$fileName);
+            }else {
+                $fileName = '';
+            }
+
         DB::table('users')->where('id',$id)->update(
             [
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'role_id'=>$request->role_id,
+                'phone'=>$request->phone,
+                'address'=>$request->address,
+                'foto'=>$fileName,
             ]
             );
             return redirect ('/user');
@@ -115,6 +148,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id',$id)->delete();
+
+        return redirect('/user')->with('success', 'Barang Berhasil di Hapus!');
     }
 }

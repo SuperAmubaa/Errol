@@ -21,6 +21,8 @@
             <th>No</th>
             <th>Nama</th>
             <th>Email</th>
+            <th>Phone</th>
+            <th>Alamat</th>
             <th>Role</th>
             <th>Action</th>
         </tr>
@@ -30,6 +32,8 @@
                 <td>{{ $loop->iteration}}</td>
                 <td>{{ $us->name }}</td>
                 <td>{{ $us->email }}</td>
+                <td>{{ $us->phone }}</td>
+                <td>{{ $us->address }}</td>
                 <td>{{ $us->rol }}</td>
                 <td>
                 <form method="POST" action="{{ route('user.destroy',$us->id)}}">

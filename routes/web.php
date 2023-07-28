@@ -50,8 +50,8 @@ Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/barang', BarangController::class); 
     Route::resource('/denda', DendaController::class); 
     Route::resource('/peminjaman', PeminjamanController::class); 
-    Route::get('/exportpeminjaman',[PeminjamanController::class, 'peminjamanExcel']);
-    Route::get('/generate-pdf',[PeminjamanController::class, 'generatePDF']);
+    Route::get('exportpeminjaman',[PeminjamanController::class, 'peminjamanExcel']);
+    Route::get('generate-pdf',[PeminjamanController::class, 'generatePDF']);
     Route::get('peminjaman-pdf',[PeminjamanController::class, 'peminjamanPDF']);
     Route::resource('/pengembalian', PengembalianController::class); 
 
