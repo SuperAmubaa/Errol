@@ -53,7 +53,17 @@
                    @endif
                 </td>
                 <td>{{ $pj->tgl_pengembalian }}</td>
-                <td>{{ $pj->denda }}</td>
+                <td>
+                    @if ($pj->denda == 1)
+                Tidak Ada Denda
+                @elseif($pj->denda == 2)
+                Keterlambatan
+                @elseif($pj->denda == 3)
+                Kerusakan
+                @elseif($pj->denda == 4)
+                Kehilangan
+                @endif
+                </td>
                 <td>Rp.{{ $pj->tarif }}</td>
                 <td>
                     <a class="btn btn-info" href="{{route('penyewaan.show',$pj->id)}}">Detail</a> 

@@ -40,23 +40,22 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/user', UserController::class);
-  
 });
 
 Route::middleware(['auth', 'petugas'])->group(function () {
     Route::resource('/kategori', KategoriController::class);
     // Route::get('/kategori-delete/{id}', [KategoriController::class, 'delete'])->name('kategori-delete');
 
-    Route::resource('/barang', BarangController::class); 
-    Route::resource('/denda', DendaController::class); 
-    Route::resource('/peminjaman', PeminjamanController::class); 
-    Route::get('exportpeminjaman',[PeminjamanController::class, 'peminjamanExcel']);
-    Route::get('generate-pdf',[PeminjamanController::class, 'generatePDF']);
-    Route::get('peminjaman-pdf',[PeminjamanController::class, 'peminjamanPDF']);
+    Route::resource('/barang', BarangController::class);
+    Route::resource('/denda', DendaController::class);
+    Route::resource('/peminjaman', PeminjamanController::class);
+    Route::get('exportpeminjaman', [PeminjamanController::class, 'peminjamanExcel']);
+    Route::get('generate-pdf', [PeminjamanController::class, 'generatePDF']);
+    Route::get('peminjaman-pdf', [PeminjamanController::class, 'peminjamanPDF']);
     // Route::resource('/pengembalian', PengembalianController::class); 
-
-
 });
+// Route::post('cekDenda', 'App\Http\Controllers\DendaController@cekDenda');
+Route::post('cekDenda', [DendaController::class, 'cekDenda']);
 
 Route::middleware(['auth', 'anggota'])->group(function () {
     Route::resource('/penyewaan', PenyewaanController::class);
@@ -64,7 +63,7 @@ Route::middleware(['auth', 'anggota'])->group(function () {
     // Route::post('/penyewaan-store', [PenyewaanController::class, 'store'])->name('penyewaan-store');
 
 
-    
+
 });
 
 

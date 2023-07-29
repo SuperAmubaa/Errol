@@ -51,17 +51,31 @@
                     @elseif($pj->status == 'dipinjam')
                     <a class="badge text-white bg-primary"> Dipinjam
                     </a>
-                    @elseif('kembali')
+                    @elseif($pj->status == 'kembali')
                     <a class="badge text-white bg-info"> Kembali
                     </a>
                    @endif
                 </td>
-                <td>{{ $pj->tgl_pengembalian }}</td>
-                <td>{{ $pj->denda }}</td>
+                <td>{{ $pj->tgl_pengembalian == '0000-00-00' ? "" : $pj->tgl_pengembalian }}</td>
+                <td>
+                    @if ($pj->denda == 1)
+                Tidak Ada Denda
+                @elseif($pj->denda == 2)
+                Keterlambatan
+                @elseif($pj->denda == 3)
+                Kerusakan
+                @elseif($pj->denda == 4)
+                Kehilangan
+                @endif
+                </td>
                 <td>Rp.{{ $pj->tarif }}</td>
                 <td>
+                    @if($pj->status == 'kembali')
+                    @else
+                    <a class="btn btn-primary" href="{{ route ('peminjaman.edit',$pj->id)}}">Konfirmasi</a> 
+                    @endif
                     {{-- tombol --}}
-                    <a class="btn btn-primary" href="{{ route ('peminjaman.edit',$pj->id)}}">Konfirmasi</a>  
+                     
                 </td>
                 
             </tr>
