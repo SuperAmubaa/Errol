@@ -42,7 +42,7 @@ $bs1 = App\Models\Kategori::all();
 </div>
 <div class="form-group">
     <label>Stok</label>
-    <input type="text" name="stok" value="{{ $bs->stok }}" class="form-control">
+    <input type="number" name="stok" value="{{ $bs->stok }}" class="form-control">
 </div>
 <div class="form-group">
     <label>Harga Sewa</label>

@@ -17,10 +17,10 @@ class BarangController extends Controller
     public function index()
     {
         $ar_barang = DB::table('barang')
-        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
-        ->select('barang.*', 'kategori.name AS kat')
-        
-        ->get();
+            ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+            ->select('barang.*', 'kategori.name AS kat')
+
+            ->get();
         return view('barang/index', compact('ar_barang'));
     }
 
@@ -44,14 +44,14 @@ class BarangController extends Controller
     {
         $validasi = $request->validate(
             [
-                'id'=>'unique:barang|min:4|max:4',
-                'kategori_id'=>'required',
-                'nama'=>'required',
-                'stok'=>'required|numeric',
-                'harga'=>'required|numeric',
-                'beli'=>'required|numeric',
-                'foto'=>'image|mimes:png,jpg|max:2048',
-                
+                'id' => 'unique:barang|min:4|max:4',
+                'kategori_id' => 'required',
+                'nama' => 'required',
+                'stok' => 'required|numeric',
+                'harga' => 'required|numeric',
+                'beli' => 'required|numeric',
+                'foto' => 'image|mimes:png,jpg|max:2048',
+
             ],
             [
                 'id.required' => 'wajib diisi',
@@ -64,34 +64,36 @@ class BarangController extends Controller
                 'foto.max' => 'Ukuran File tidak boleh melebihi 2048 KB',
             ],
         );
-       
 
-           if(!empty($request->foto)){
+
+        if (!empty($request->foto)) {
             $request->validate(
-                ['foto'=> 'image|mimes:png,jpg|max:2048',
-                ]);
-            $fileName = $request->nama.'.'
-            .$request->foto->extension();
+                [
+                    'foto' => 'image|mimes:png,jpg|max:2048',
+                ]
+            );
+            $fileName = $request->nama . '.'
+                . $request->foto->extension();
             $request->foto
-            ->move(public_path('images'),$fileName);
-            }else {
-                $fileName = '';
-            }
+                ->move(public_path('images'), $fileName);
+        } else {
+            $fileName = '';
+        }
 
 
         DB::table('barang')->insert(
             [
-                'id'=>$request->id,
+                'id' => $request->id,
                 // 'foto'=>$request->foto,
-                'kategori_id'=>$request->kategori_id,
-                'nama'=>$request->nama,
-                'stok'=>$request->stok,
-                'harga'=>$request->harga,
-                'beli'=>$request->beli,
-                'foto'=>$fileName,
+                'kategori_id' => $request->kategori_id,
+                'nama' => $request->nama,
+                'stok' => $request->stok,
+                'harga' => $request->harga,
+                'beli' => $request->beli,
+                'foto' => $fileName,
             ]
-            );
-            return redirect ('/barang')->with('success', 'Barang Baru Berhasil di Tambahkan!');
+        );
+        return redirect('/barang')->with('success', 'Barang Baru Berhasil di Tambahkan!');
     }
 
     /**
@@ -103,14 +105,16 @@ class BarangController extends Controller
     public function show($id)
     {
         $ar_barang = DB::table('barang')
-        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
-        ->select('barang.*', 'kategori.name AS kat')
-        
-        ->where('barang.id','=',$id)
-        ->get();
+            ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+            ->select('barang.*', 'kategori.name AS kat')
 
-        return view('barang.show',
-        compact('ar_barang'));
+            ->where('barang.id', '=', $id)
+            ->get();
+
+        return view(
+            'barang.show',
+            compact('ar_barang')
+        );
     }
 
     /**
@@ -121,11 +125,13 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('barang')->where('id',$id)
-        ->get();
+        $data = DB::table('barang')->where('id', $id)
+            ->get();
 
-        return view('barang/edit',
-        compact('data'));
+        return view(
+            'barang/edit',
+            compact('data')
+        );
     }
 
     /**
@@ -138,35 +144,33 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
 
-        if(!empty($request->foto)){
+        if (!empty($request->foto)) {
             $request->validate(
-                ['foto'=> 'image|mimes:png,jpg|max:2048']
+                ['foto' => 'image|mimes:png,jpg|max:2048']
             );
 
             // $data_foto = barang::where('id',$id);
             // File::delete(public_path('foto'). '/'. $data_foto->foto);
 
-            $fileName = $request->nama.'.'.$request->foto->extension();
-            $request->foto->move(public_path('images'),$fileName);
-            }else {
-                $fileName = '';
-            }
+            $fileName = $request->nama . '.' . $request->foto->extension();
+            $request->foto->move(public_path('images'), $fileName);
+        } else {
+            $fileName = '';
+        }
 
-            
 
-        DB::table('barang')->where('id',$id)->update(
+
+        DB::table('barang')->where('id', $id)->update(
             [
-                'id'=>$request->id,
-                // 'foto'=>$request->foto,
-                'kategori_id'=>$request->kategori_id,
-                'nama'=>$request->nama,
-                'stok'=>$request->stok,
-                'harga'=>$request->harga,
-                'beli'=>$request->beli,
-                'foto'=>$fileName,
+                'kategori_id' => $request->kategori_id,
+                'nama' => $request->nama,
+                'stok' => $request->stok,
+                'harga' => $request->harga,
+                'beli' => $request->beli,
+                'foto' => $fileName,
             ]
-            );
-            return redirect ('/barang')->with('success', 'Barang Berhasil di Ubah!');
+        );
+        return redirect('/barang')->with('success', 'Barang Berhasil di Ubah!');
     }
 
     /**
@@ -177,7 +181,7 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('barang')->where('id',$id)->delete();
+        DB::table('barang')->where('id', $id)->delete();
 
         return redirect('/barang')->with('success', 'Barang Berhasil di Hapus!');
     }

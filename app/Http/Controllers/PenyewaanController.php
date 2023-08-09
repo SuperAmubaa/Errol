@@ -72,12 +72,12 @@ class PenyewaanController extends Controller
                     ]
                 );
 
-                $stok_now = $barangs->first()->stok;
-                $stok_new = $stok_now - $request->qty;
+                // $stok_now = $barangs->first()->stok;
+                // $stok_new = $stok_now - $request->qty;
 
-                DB::table('barang')->where('id', $request->barang_id)->update([
-                    'stok' => $stok_new
-                ]);
+                // DB::table('barang')->where('id', $request->barang_id)->update([
+                //     'stok' => $stok_new
+                // ]);
             } else {
                 return redirect('/penyewaan')->with('error', 'Tanggal Tidak Sesuai!');
             }

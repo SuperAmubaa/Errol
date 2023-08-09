@@ -109,8 +109,18 @@ class PeminjamanController extends Controller
     {
         if ($request->status == 'Dipinjam') {
             $tanggal_pengembalian = '';
+            $peminjaman = DB::table('peminjaman')->where('id', $id)->first();
+            $barangs = DB::table('barang')->where('id', $peminjaman->barang_id)->first();
+            $stok_now = $barangs->stok;
+            $stok_new = $stok_now - $peminjaman->qty;
+
+            DB::table('barang')->where('id', $peminjaman->barang_id)->update([
+                'stok' => $stok_new
+            ]);
         } elseif ($request->status == 'Kembali') {
             $tanggal_pengembalian = date('Y-m-d');
+        } else {
+            $tanggal_pengembalian = "";
         }
         DB::table('peminjaman')->where('id', $id)->update(
             [

@@ -17,7 +17,7 @@ $rs1 = App\Models\Barang::all();
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a class="btn btn-success" href="{{route('penyewaan.create')}}">Sewa Barang</a>
+            <a class="btn btn-primary" href="{{route('penyewaan.create')}}">Sewa Barang</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

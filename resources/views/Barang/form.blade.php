@@ -55,7 +55,7 @@ $rs1 = App\Models\Kategori::all();
 </div>
 <div class="form-group">
     <label>Stok</label>
-    <input type="text" name="stok" value="{{old('stok')}}" class="form-control @error('stok') is-invalid @enderror">
+    <input type="number" name="stok" value="{{old('stok')}}" class="form-control @error('stok') is-invalid @enderror">
     @error('stok')
     <div class="invalid-feedback">
         {{ $message }}

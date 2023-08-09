@@ -46,7 +46,7 @@
             <input type="text" name="tgl_pengembalian" value="{{date("d/m/Y")}}" class="form-control" readonly>
         </div>
         <div class="form-group">
-            <label for="denda_id" class="form-label">Denda</label>
+            <label for="denda" class="form-label">Denda</label>
             <select class="form-control userbox @error('denda') is-invalid @enderror" name="denda" id="denda" >
                 <option value="" selected disabled>--- Pilih Denda ---</option>
                 @foreach($ar_denda as $denda)

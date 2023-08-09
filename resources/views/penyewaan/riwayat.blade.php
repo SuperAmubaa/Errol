@@ -28,7 +28,7 @@
             <th>Return</th>
             <th>Denda</th>
             <th>Tarif</th>
-            <th>Action</th>
+            
 
         </tr>
         <tbody>
@@ -65,9 +65,6 @@
                 @endif
                 </td>
                 <td>Rp.{{ $pj->tarif }}</td>
-                <td>
-                    <a class="btn btn-info" href="{{route('penyewaan.show',$pj->id)}}">Detail</a> 
-                </td>
             </tr>
             @endforeach
         </tbody>
